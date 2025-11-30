@@ -12,41 +12,31 @@ width = 40
 height = 40
 
 #images background
-background = pygame.image.load('Assets/BACKGROUND.png')
+background = pygame.image.load('CODE\Assets\BACKGROUND.png')
 background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
 #images of desmond
-walking = [pygame.image.load('Assets/walk img/walk1.png').convert_alpha(), pygame.image.load(
-    'Assets/walk img/walk2.png'), pygame.image.load(
-    'Assets/walk img/walk3.png'), pygame.image.load('Assets/walk img/walk4.png'), pygame.image.load(
-    'Assets/walk img/walk5.png'), pygame.image.load(
-    'Assets/walk img/walk6.png')]
-for pic in walking:
-    pic = pygame.transform.scale(pic, (20, 20)).convert_alpha()
+walking = [pygame.transform.scale(pygame.image.load(f'CODE\Assets\walk img\walk{i}.png').convert_alpha(), (50, 50)) for i in range(1, 7)]
 
-idle = pygame.image.load('Assets/desmond_idle.png')
-jumping = [pygame.image.load('Assets/jump img/jump1.png'), pygame.image.load('Assets/jump img/jump2.png'), pygame.image.load(
-    'Assets/jump img/jump3.png'), pygame.image.load('Assets/jump img/jump4.png'), pygame.image.load(
-    'Assets/jump img/jump5.png'), pygame.image.load(
-    'Assets/jump img/jump6.png'), pygame.image.load('Assets/jump img/jump7.png'), pygame.image.load(
-    'Assets/jump img/jump8.png')]
+idle = pygame.image.load('CODE\Assets\desmond_idle.png')
+jumping = [pygame.transform.scale(pygame.image.load(f'CODE\Assets\jump img\jump{i}.png').convert_alpha(), (50, 50))for i in range(1, 9)]
 
-attack = [pygame.image.load('Assets/attack img/attack1.png'),pygame.image.load('Assets/attack img/attack2.png'),pygame.image.load('Assets/attack img/attack3.png'),pygame.image.load('Assets/attack img/attack4.png'),pygame.image.load('Assets/attack img/attack5.png'),pygame.image.load('Assets/attack img/attack6.png')]
-
+attack = [pygame.image.load('CODE/Assets/attack img/attack1.png'),
+pygame.image.load('CODE/Assets/attack img/attack2.png'),pygame.image.load('CODE/Assets/attack img/attack3.png'),pygame.image.load('CODE/Assets/attack img/attack4.png'),pygame.image.load('CODE/Assets/attack img/attack5.png'), pygame.image.load('CODE/Assets/attack img/attack6.png')]
 
 #obstacles and stuff
-ships = [pygame.image.load('Assets/SHIPS/ship1.png'), pygame.image.load('Assets/SHIPS/ship2.png'), pygame.image.load(
-    'Assets/SHIPS/ship3.png')]
+ships = [pygame.image.load('CODE\Assets\SHIPS\ship1.png'), pygame.image.load('CODE\Assets\SHIPS\ship2.png'), pygame.image.load(
+    'CODE\Assets\SHIPS\ship1.png')]
 for ship in ships:
     ship = pygame.transform.scale(ship, (40, 40)).convert_alpha()
-clouds = [pygame.image.load('Assets/CLOUDS/clouds1.png'), pygame.image.load('Assets/CLOUDS/clouds2.png')]
-rock_small = [pygame.image.load('Assets/Rock2.png'), pygame.image.load('Assets/smallRock3.png'), pygame.image.load(
-    'Assets/small Rock4.png')]
+clouds = [pygame.image.load('CODE\Assets\CLOUDS\clouds1.png'), pygame.image.load('CODE\Assets\CLOUDS\clouds2.png')]
+rock_small = [pygame.image.load('CODE\Assets\Rock2.png'), pygame.image.load('CODE\Assets\smallRock3.png'), pygame.image.load(
+    'CODE\Assets\smallRock3.png')]
 for rock in rock_small:
     rock = pygame.transform.scale(rock, (40, 40)).convert_alpha()
-rockk1 = pygame.image.load('Assets/Rock1.png')
+rockk1 = pygame.image.load('CODE\Assets\Rock1.png')
 rockk1 = pygame.transform.scale(rockk1, (90, 70)).convert_alpha()
-rockk2 = pygame.image.load('Assets/LargeRock5.png')
+rockk2 = pygame.image.load('CODE\Assets\LargeRock5.png')
 rockk2 = pygame.transform.scale(rockk2, (100, 100)).convert_alpha()
 rock_large = [rockk1, rockk2]
 
@@ -90,10 +80,10 @@ class Desmond:
             self.jump()
 
 
-        if self.step_index == len(self.run_img)*5:
+        if self.step_index >= len(self.run_img)*5:
             self.step_index = 0
 
-        if self.jump_index == len(self.jump_img)*5:
+        if self.jump_index >= len(self.jump_img)*5:
             self.jump_index = 0
 
 
